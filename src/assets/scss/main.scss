@@ -1,0 +1,101 @@
+@import './colors';
+@import './normalize';
+@import './elements';
+@import './fonts';
+@import './atomic';
+
+.sun {
+    background: url('../img/sun.svg') top left/contain no-repeat;
+    width: 10%;
+    height:10%;
+    top: 5rem;
+    left: 5rem;
+    position: absolute;
+    content: '';
+    z-index: 1;
+}
+.coming-soon {
+    color: white;
+    text-align: center;
+
+
+    h1 {
+        font-size: 8rem;
+        font-family: 'Sunny Title';
+        margin: 3rem 0;
+        text-shadow: inset 0.2rem 0.2rem 0.4rem #eda800;
+        text-shadow: 0.2rem 0.2rem 0.4rem rgba(0,0,0,0.3);
+
+        span {
+            color: $red;
+        }
+    }
+    p {
+        font-family: 'Sunny Body';
+        font-size: 4rem;
+        font-style: italic;
+        color: rgba(255,255,255,0.7);
+        margin: 3rem 0;
+    }
+}
+.modal {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    width: 90%;
+    min-width: 28rem;
+    max-width: 50rem;
+    background: white;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.7rem;
+    font-family: 'Sunny Body';
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba(0,0,0,0.3);
+    z-index: 3;
+}
+
+.modal-head {
+    background: #8B69D1;
+    padding: 2rem;
+    color: #42287A;
+}
+.modal-content {
+    flex: 1 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: scroll;
+    h2 {
+        font-family: 'Sunny Title';
+    }
+}
+.links-logos {
+    margin: 2rem 0;
+
+    a {
+        opacity: 0.6;
+        transition: 0.4s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+.modal-footer {
+    background: #42287A;
+    padding: 2rem;
+    color: #8B69D1;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover  {
+        background-color: #8B69D1;
+        color: #42287A;
+    }
+}
