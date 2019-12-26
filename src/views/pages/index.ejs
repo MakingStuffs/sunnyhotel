@@ -1,12 +1,21 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en_GB">
 
 <head>
   <meta charset="utf-8">
-  <title>HTML 5</title>
+  <title>Sunny Hotel, Batala | Under Contruction</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="robots" value="index,follow">
+  <meta type="og:type" content="website">
+  <meta type="og:title" content="Sunny Hotel, Batala | Under Contruction">
+  <meta type="og:image" content="${require('../../assets/img/sunnyhotel-thumb.png')}">
+  <meta type="og:url" content="https://sunnyhotelbatala.com">
+
+  <link rel="apple-touch-icon" href="${require('../../assets/img/favicon.png')}">
+  <link rel="icon" type="image/png" href="${require('../../assets/img/favicon-32x32.png')}" sizes="32x32">
+  <link rel="icon" type="image/png" href="${require('../../assets/img/favicon-16x16.png')}" sizes="16x16">
+  <link rel="canonical" href="https://sunnyhotelbatala.com">
   <!-- Place favicon.ico in the root directory -->
 
   <meta name="theme-color" content="#fafafa">
@@ -18,14 +27,14 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <main class="sleep">
-    <span id="sun" class="sun"></span>
+  <main class="">
     <div class="coming-soon">
+      <span id="sun" class="sun"></span>
       <h1>Sunny Hotel, <span>Batala</span></h1>
       <p>Website under construction</p>
       <button id="contactButton">Contact us</button>
     </div>
-    <div class="modal active">
+    <div class="modal">
       <div class="modal-head">
         <img src="../../assets/img/aircon.svg" height="25" class="head-logo" />
         <img src="../../assets/img/parking.png" height="25" class="head-logo" />
@@ -35,21 +44,37 @@
         <img src="../../assets/img/laundry.svg" height="25" class="head-logo" />
       </div>
       <div class="modal-content">
-        <h2>Sunny Hotel Restaurant & Beer Bar</h2>
+        <span class="loader"></span>
+        <form role="form" method="post" action="localhost:8080/send-mail" enctype="multipart/form-data">
+          <h3>Send a message</h3>
+          <fieldset>
+            <input type="text" name="firstname" placeholder="First name...">
+            <input type="text" name="lastname" placeholder="Last name...">
+            <input type="text" name="subject" placeholder="Subject...">
+            <input type="email" name="email" placeholder="Email...">
+            <textarea rows="5" type="text" name="message" placeholder="Message..."></textarea>
+            <input type="submit">
+          </fieldset>
+        </form>
+        <hr>
+        <h3>Address and phone</h3>
         <address>
+          <p>Sunny Hotel Restaurant & Beer Bar</p>
           <p>Near Bus Stand Batala</p>
           <p>Jalandhar Road</p>
           <p>Batala, Punjab</p>
           <p>143505, India</p>
           <p> +91 187 124 5344</p>
         </address>
+        <hr>
         <div class="links-logos"></a>
-          <a href="" title="" rel="noopener noreferrer" ><img src="../../assets/img/goibibo.png" width="50" height="50" /></a>
-          <a href="" title="" rel="noopener noreferrer" ><img src="../../assets/img/tripadvisor.png" height="50" /></a>
+          <a href="" title="" rel="noopener noreferrer"><img src="../../assets/img/goibibo.png" width="50"
+              height="50" /></a>
+          <a href="" title="" rel="noopener noreferrer"><img src="../../assets/img/tripadvisor.png" height="50" /></a>
         </div>
       </div>
       <div id="close" class="modal-footer" tabindex="0">
-         Close
+        Close
       </div>
     </div>
   </main>
