@@ -1,0 +1,29 @@
+html {
+    font-size: 62.5%;
+}
+body {
+    background: linear-gradient(45deg, $dark, #2e1d35);
+    margin: 0;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+button {
+    background-color: $red;
+    padding: 1.5rem;
+    border-radius: 1rem 0 1rem 0;
+    font-size: 2rem;
+    font-family: 'Sunny Body';
+    border: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem rgba(0,0,0,0.3);
+    color: rgba(255, 255, 255, 0.9);
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #1B9540;
+    }
+}

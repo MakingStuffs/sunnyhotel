@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 const webpack = require('webpack');
 const postcssEnv = require('postcss-preset-env');
-const HotMiddleWarePlugin = require('webpack-hot-middleware');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 
 module.exports = merge(common, {
@@ -27,7 +26,7 @@ module.exports = merge(common, {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
-                            importLoader: 1
+                            importLoaders: 1
                         }
                     },
                     {
@@ -64,6 +63,30 @@ module.exports = merge(common, {
                     'html-loader',
                     'ejs-html-loader'
                 ]
+            },
+            {
+                test: /\.(svg|png)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        publicPath: path.resolve(__dirname, '/assets/img'),
+                        outputPath: 'assets/img',
+                        filename: '[name].[ext]',
+                        esModule: false
+                    }
+                }
+            },
+            {
+                test: /\.(ttf|woff|woff2)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        publicPath: path.resolve(__dirname, '/assets/fonts'),
+                        outputPath: 'assets/fonts',
+                        filename: '[name].[ext]',
+                        esModule: false
+                    }
+                }
             }
         ]
     },
@@ -74,7 +97,7 @@ module.exports = merge(common, {
             filename: 'index.html',
         }),
         new ExtractCssChunksPlugin({
-            filename: '[name].css'
+            filename: 'assets/css/[name].css'
         })
     ]
 });

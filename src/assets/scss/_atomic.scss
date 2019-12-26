@@ -1,0 +1,15 @@
+.active {
+    display: block;
+}
+.sleep {
+    position: relative;
+    &::before{
+        height:100%;
+        width: 100%;
+        position: absolute;
+        content: '';
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.7);
+        z-index:2;
+    }
+}
