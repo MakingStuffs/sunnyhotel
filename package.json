@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server/dev-server.js"
+    "dev": "node server/dev-server.js",
+    "mail": "node server/mail-server.js"
   },
-  "plugins": {
-    "autoprefixer": {}
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "defaults"
@@ -21,18 +24,23 @@
     "@babel/preset-env": "^7.7.6",
     "@fortawesome/fontawesome-free": "^5.12.0",
     "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cors": "^2.8.5",
     "css-loader": "^3.4.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "ejs-html-loader": "^4.0.1",
     "eslint": "^6.7.2",
     "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
     "extract-css-chunks-webpack-plugin": "^4.7.1",
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "making-stuffs-queries": "^1.1.11",
     "node-sass": "^4.13.0",
+    "nodemailer": "^6.4.2",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "^8.0.0",
