@@ -1,16 +1,46 @@
 html {
     font-size: 62.5%;
+    line-height: 1.4;
+    color: #222;
 }
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+textarea {
+    resize: none;
+    width: calc(100% - 8rem);
+}
+
 body {
     background: linear-gradient(45deg, $dark, #2e1d35);
     margin: 0;
 }
+
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    transition: 0.5s;
 }
+
 button {
     background-color: $red;
     padding: 1.5rem;
@@ -18,7 +48,7 @@ button {
     font-size: 2rem;
     font-family: 'Sunny Body';
     border: none;
-    box-shadow: 0.3rem 0.3rem 0.6rem rgba(0,0,0,0.3);
+    box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.3);
     color: rgba(255, 255, 255, 0.9);
     transition: 0.5s;
     cursor: pointer;
@@ -26,4 +56,33 @@ button {
     &:hover {
         background-color: #1B9540;
     }
+}
+
+input,
+textarea {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem 0 1rem 0;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    margin: 1rem;
+}
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+input[type="submit"] {
+    transition: 0.4s;
+    background-color: $green;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.9);
+    width: 50%;
+
+    &:hover {
+        background-color: $purple;
+    }
+}
+
+form {
+    transition: 0.4s;
 }

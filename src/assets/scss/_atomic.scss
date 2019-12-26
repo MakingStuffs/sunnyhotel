@@ -1,8 +1,14 @@
 .active {
-    display: block;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1 !important;
+}
+.alive {
+    display: unset !important;
+    opacity: 1 !important;
 }
 .sleep {
     position: relative;
+    transition: 0.5s;
     &::before{
         height:100%;
         width: 100%;
