@@ -32,9 +32,9 @@ module.exports = merge(common, {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            preset: () => postcssEnv(),
+                            indent: 'postcss',
+                            plugins: () => postcssEnv(),
                             sourceMap: 'inline',
-                            indent: 'postcss'
                         },
 
                     },
@@ -60,7 +60,12 @@ module.exports = merge(common, {
             {
                 test: /\.ejs$/,
                 use: [
-                    'html-loader',
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            interpolate: 'require'
+                        }
+                    },
                     'ejs-html-loader'
                 ]
             },
