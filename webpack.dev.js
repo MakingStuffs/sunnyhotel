@@ -5,28 +5,36 @@ const common = require('./webpack.common');
 const webpack = require('webpack');
 const postcssEnv = require('postcss-preset-env');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
-
+function recursiveIssuer(m) {
+    if (m.issuer) {
+      return recursiveIssuer(m.issuer);
+    } else if (m.name) {
+      return m.name;
+    } else {
+      return false;
+    }
+  }
 module.exports = merge(common, {
     mode: 'development',
     entry: [
-        'webpack-hot-middleware/client'
+        'webpack-hot-middleware/client', 
+        './src/assets/web-components/contact-modal.js', 
+        '@babel/polyfill'
     ],
     module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    {
+        rules: [{
+                test: /\.(s*)css$/,
+                use: [{
                         loader: ExtractCssChunksPlugin.loader,
                         options: {
-                            hot: true
+                            hot: true,
                         }
                     },
                     {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
-                            importLoaders: 1
+                            importLoaders: 3
                         }
                     },
                     {
@@ -48,19 +56,21 @@ module.exports = merge(common, {
             },
             {
                 test: /\.js$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env']
-                        }
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env'
+                        ],
+                        plugins: [
+                            "@babel/plugin-transform-regenerator"
+                        ]
                     }
-                ]
+                }]
             },
             {
                 test: /\.ejs$/,
-                use: [
-                    {
+                use: [{
                         loader: 'html-loader',
                         options: {
                             interpolate: 'require'
@@ -102,7 +112,8 @@ module.exports = merge(common, {
             filename: 'index.html',
         }),
         new ExtractCssChunksPlugin({
-            filename: 'assets/css/[name].css'
+            filename: 'assets/css/[name].css',
+            chunkFilename: 'assets/css/[id].css',
         })
     ]
 });
