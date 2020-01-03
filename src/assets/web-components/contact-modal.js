@@ -35,11 +35,6 @@ class ContactModal extends HTMLElement {
         this.blackout = msCreate('span', {
             class: 'blackout'
         });
-        this.style = msCreate('link', {
-            rel: 'stylesheet',
-            type: 'text/css',
-            href: '/assets/css/modal.css'
-        });
     }
 
     connectedCallback() {
@@ -124,12 +119,12 @@ class ContactModal extends HTMLElement {
         }
     }
 
-    async submitForm() {
+    async submitForm(e) {
+        e.preventDefault();
         this.fields.disabled = true;
         if (!this.loading) {
             this.loading = true;
             const validated = await this.validateFields();
-
             if (validated === true) {
                 this.sendForm();
             } else {
@@ -145,11 +140,15 @@ class ContactModal extends HTMLElement {
         const fields = this.fields.children;
         let errors = [];
         for (let field of fields) {
+
             if (field.getAttribute('type') === 'submit') continue;
+
             const input = field.hasAttribute('fieldType') ? msQuery(field.getAttribute('fieldType'), field.shadowRoot) : msQuery('input', field.shadowRoot);
             const regex = new RegExp(field.getAttribute('regex'));
-            if (field.hasAttribute('failed')) return;
 
+            if (field.hasAttribute('failed')) {
+                continue;
+            }
 
             if (!input.value) {
                 errors.push({
@@ -162,7 +161,7 @@ class ContactModal extends HTMLElement {
             if (!regex.test(input.value)) {
                 errors.push({
                     field: field.getAttribute('name'),
-                    error: 'illegal character'
+                    error: 'Illegal character detected'
                 });
                 continue;
             }
@@ -173,14 +172,19 @@ class ContactModal extends HTMLElement {
 
     async sendForm() {
         const postBody = {};
-        for (let field of this.fields.children) {
-            if (field.type === 'submit') continue;
-            const input = field.hasAttribute('fieldType') ? msQuery(field.getAttribute('fieldType'), field.shadowRoot) : msQuery('input', field.shadowRoot);
-            if (!input.value || !input.name) continue;
-            postBody[input.name] = input.value;
-        }
         try {
-            const reply = await fetch('http://localhost:8080/send-mail', {
+            for (let field of this.fields.children) {
+
+                if (field.type === 'submit') continue;
+
+                const input = field.hasAttribute('fieldType') ? msQuery(field.getAttribute('fieldType'), field.shadowRoot) : msQuery('input', field.shadowRoot);
+
+                if (!input.value || !input.name) continue;
+
+                postBody[input.name] = input.value;
+            }
+            const url = this.form.getAttribute('action');
+            const reply = await fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(postBody),
                 headers: {

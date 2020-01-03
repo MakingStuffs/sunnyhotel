@@ -4,7 +4,6 @@
 @import './fonts';
 @import './atomic';
 
-
 .sun {
     background: url('../img/sun.svg') top left/contain no-repeat;
     width: 10rem;
@@ -43,6 +42,4 @@
     }
 }
 
-
-
-
+@import './mediaQueries';

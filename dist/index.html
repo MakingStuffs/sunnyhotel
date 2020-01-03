@@ -1,0 +1,534 @@
+<!doctype html>
+<html class="no-js" lang="en_GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sunny Hotel, Batala | Under Contruction</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" value="index,follow">
+  <meta type="og:type" content="website">
+  <meta type="og:title" content="Sunny Hotel, Batala | Under Contruction">
+  <meta type="og:image" content="/assets/img/a609fdf336ed45f6db92a7412101c881.png">
+  <meta type="og:url" content="https://sunnyhotelbatala.com">
+
+  <link rel="apple-touch-icon" href="/assets/img/487bab3c19ef7bbba972b3ceb9b70f88.png">
+  <link rel="icon" type="image/png" href="/assets/img/193c5e24fae12e345a8a61a1716ddcf8.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/img/415856e73a675d61ea72eec8e6bade48.png" sizes="16x16">
+  <link rel="canonical" href="https://sunnyhotelbatala.com">
+  <!-- Place favicon.ico in the root directory -->
+
+  <meta name="theme-color" content="#fafafa">
+<link href="/assets/css/main.css" rel="stylesheet"></head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <main class="">
+    <div class="coming-soon">
+      <span id="sun" class="sun"></span>
+      <h1>Sunny Hotel, <span>Batala</span></h1>
+      <p>Website under construction</p>
+      <button id="contactButton">Contact us</button>
+    </div>
+
+    <template id="contact-template">
+      <style>
+        contact-input {
+          position: relative;
+          display: inline-block;
+        }
+
+        contact-input[fieldType="textarea"] {
+          display: block;
+        }
+
+        fieldset {
+          border: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        input[type="submit"] {
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+          background-color: #1B9540;
+          cursor: pointer;
+          color: rgba(255, 255, 255, 0.9);
+          width: 50%;
+          padding: 1rem;
+          font-size: 1.5rem;
+          border-radius: 1rem 0 1rem 0;
+          border: 0.1rem solid rgba(0, 0, 0, 0.3);
+          margin: 1rem;
+        }
+
+        input[type="submit"]:hover {
+          background-color: #42287A;
+        }
+
+        form {
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+
+        .wrapper {
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          width: 90%;
+          min-width: 28rem;
+          max-width: 50rem;
+          background: white;
+          text-align: center;
+          font-size: 1.7rem;
+          font-family: 'Sunny Body';
+          height: 80%;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          border-radius: 10px;
+          overflow: hidden;
+          -webkit-box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
+          z-index: 3;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          -webkit-transition: 0.5s;
+          transition: 0.5s;
+        }
+
+        .wrapper:not(.open) {
+          -webkit-transform: translate(-50%, -200%);
+          transform: translate(-50%, -200%);
+        }
+
+        .modal-head {
+          background: #8B69D1;
+          padding: 2rem;
+          color: #42287A;
+        }
+
+        .modal-head img {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+        }
+
+        .modal-content {
+          -webkit-box-flex: 1;
+          -ms-flex: 1 0;
+          flex: 1 0;
+          padding: 2rem;
+          overflow-y: scroll;
+          position: relative;
+        }
+
+        .modal-content h2 {
+          font-family: 'Sunny Title';
+        }
+
+        .links-logos {
+          margin: 2rem 0;
+        }
+
+        .links-logos a {
+          opacity: 0.6;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+
+        .links-logos a:hover {
+          opacity: 1;
+        }
+
+        .modal-footer {
+          background: #42287A;
+          padding: 2rem;
+          color: #8B69D1;
+          cursor: pointer;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+
+        .modal-footer:hover {
+          background-color: #CA3C25;
+          color: white;
+        }
+
+        .loader {
+          position: absolute;
+          content: '';
+          top: calc(50% - 5rem);
+          left: calc(50% - 5rem);
+          width: 10rem;
+          height: 10rem;
+          border: 5px solid lightBlue;
+          border-radius: 50%;
+          overflow: hidden;
+          -webkit-transition: 0.3s;
+          transition: 0.3s;
+          -webkit-box-shadow: 0rem 0rem 0.6rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0rem 0rem 0.6rem rgba(0, 0, 0, 0.3);
+          -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+          z-index: 4;
+        }
+
+        .blackout {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          content: '';
+          background-color: rgba(0, 0, 0, 0.9);
+          top: 0;
+          left: 0;
+          z-index: 3;
+        }
+
+        .success {
+          background: lightGreen;
+          border-color: lightGreen;
+        }
+
+        .fail {
+          background: #ffcccb;
+          border-color: #ffcccb;
+        }
+
+        .loader.success::before {
+          height: 0.7rem;
+          width: 4.5rem;
+          position: absolute;
+          top: 65%;
+          left: 44%;
+          background-color: green;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          border-radius: 5px;
+          -webkit-animation: baseGrow 0.5s;
+          animation: baseGrow 0.5s;
+          content: '';
+        }
+
+        .loader.success::after {
+          height: 0.7rem;
+          width: 2.5rem;
+          position: absolute;
+          top: 65%;
+          left: 49%;
+          background-color: green;
+          -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          border-radius: 5px;
+          -webkit-animation: tipGrow 0.5s;
+          animation: tipGrow 0.5s;
+          content: '';
+        }
+
+        .loader.fail::before {
+          width: 6rem;
+          height: 0.5rem;
+          background: darkRed;
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+          top: calc(50% - 0.25rem);
+          left: calc(50% - 3rem);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          position: absolute;
+          content: '';
+          border-radius: 10px;
+          -webkit-animation: leftIn 0.3s linear;
+          animation: leftIn 0.3s linear;
+          content: '';
+        }
+
+        .loader.fail::after {
+          width: 6rem;
+          height: 0.5rem;
+          background: darkRed;
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+          top: calc(50% - 0.25rem);
+          right: calc(50% - 3rem);
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          position: absolute;
+          content: '';
+          border-radius: 10px;
+          -webkit-animation: rightIn 0.3s linear;
+          animation: rightIn 0.3s linear;
+          content: '';
+        }
+
+        .loader.success,
+        .loader.fail {
+          -webkit-animation: pop 1.2s ease-in-out;
+          animation: pop 1.2s ease-in-out;
+        }
+
+        @-webkit-keyframes spin {
+          0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            border-top: 5px solid blue;
+          }
+
+          100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border-top: 5px solid blue;
+          }
+        }
+
+        @keyframes spin {
+          0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            border-top: 5px solid blue;
+          }
+
+          100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border-top: 5px solid blue;
+          }
+        }
+
+        @-webkit-keyframes tipGrow {
+          0% {
+            width: 0px;
+            left: 0;
+            top: 0;
+          }
+
+          25% {
+            width: 0px;
+            left: 0;
+            top: 0;
+          }
+
+          50% {
+            top: 0%;
+            left: 0%;
+            width: 0;
+          }
+
+          100% {
+            top: 65%;
+            left: 50%;
+            width: 1.5rem;
+          }
+        }
+
+        @keyframes tipGrow {
+          0% {
+            width: 0px;
+            left: 0;
+            top: 0;
+          }
+
+          25% {
+            width: 0px;
+            left: 0;
+            top: 0;
+          }
+
+          50% {
+            top: 0%;
+            left: 0%;
+            width: 0;
+          }
+
+          100% {
+            top: 65%;
+            left: 50%;
+            width: 1.5rem;
+          }
+        }
+
+        @-webkit-keyframes baseGrow {
+          0% {
+            width: 0;
+          }
+
+          80% {
+            width: 0;
+          }
+
+          100% {
+            width: 2.5rem;
+          }
+        }
+
+        @keyframes baseGrow {
+          0% {
+            width: 0;
+          }
+
+          80% {
+            width: 0;
+          }
+
+          100% {
+            width: 2.5rem;
+          }
+        }
+
+        @-webkit-keyframes pop {
+          0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+
+          80% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+
+          100% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+          }
+        }
+
+        @keyframes pop {
+          0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+
+          80% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+
+          100% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+          }
+        }
+
+        @-webkit-keyframes leftIn {
+          0% {
+            left: 0;
+            top: 0;
+            width: 0;
+          }
+
+          100% {
+            top: calc(50% - 0.25rem);
+            left: calc(50% - 1.5rem);
+            width: 3rem;
+          }
+        }
+
+        @keyframes leftIn {
+          0% {
+            left: 0;
+            top: 0;
+            width: 0;
+          }
+
+          100% {
+            top: calc(50% - 0.25rem);
+            left: calc(50% - 1.5rem);
+            width: 3rem;
+          }
+        }
+
+        @-webkit-keyframes rightIn {
+          0% {
+            right: 0;
+            top: 0;
+            width: 0;
+          }
+
+          100% {
+            top: calc(50% - 0.25rem);
+            right: calc(50% - 1.5rem);
+            width: 3rem;
+          }
+        }
+
+        @keyframes rightIn {
+          0% {
+            right: 0;
+            top: 0;
+            width: 0;
+          }
+
+          100% {
+            top: calc(50% - 0.25rem);
+            right: calc(50% - 1.5rem);
+            width: 3rem;
+          }
+        }
+      </style>
+      <div class="wrapper">
+        <div class="modal-head">
+          <img src="/assets/img/88cd3283c5ae99283ee9233f1f457e12.svg" height="25" class="head-logo" />
+          <img src="/assets/img/af344bf8a43d39b851557837a25bb093.png" height="25" class="head-logo" />
+          <img src="/assets/img/e1b8fbf8777d9bd5ffde0f7e6530ee68.svg" height="25" class="head-logo" />
+          <img src="/assets/img/1f54e1fceececb85bcbffe7cf91ed4cd.svg" height="25" class="head-logo" />
+          <img src="/assets/img/4af6735f3d57e67fc1f72ff6f5b396d3.svg" height="25" class="head-logo" />
+          <img src="/assets/img/fd2ea2827a3057a12c296bed9fc18a02.svg" height="25" class="head-logo" />
+        </div>
+        <div class="modal-content">
+          <form role="form" method="post" action="http://localhost:8080/send-mail" enctype="multipart/form-data">
+            <h3>Send a message</h3>
+            <fieldset>
+              <contact-input type="text" regex="^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*$" name="firstname"
+                placeholder="First name..."></contact-input>
+              <contact-input type="text" regex="^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*$" name="lastname"
+                placeholder="Last name..."></contact-input>
+              <contact-input type="text" regex="^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*$" name="subject"
+                placeholder="Subject..."></contact-input>
+              <contact-input type="email"
+                regex='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                name="email" placeholder="Email..."></contact-input>
+              <contact-input fieldType="textarea" rows="5" regex="[^{}<>]" name="message" placeholder="Message...">
+              </contact-input>
+              <input id="submit" type="submit">
+            </fieldset>
+          </form>
+          <hr>
+          <h3>Address and phone</h3>
+          <address>
+            <p>Sunny Hotel Restaurant & Beer Bar</p>
+            <p>Near Bus Stand Batala</p>
+            <p>Jalandhar Road</p>
+            <p>Batala, Punjab</p>
+            <p>143505, India</p>
+            <p> +91 187 124 5344</p>
+          </address>
+          <hr>
+          <div class="links-logos"></a>
+            <a href="" title="" rel="noopener noreferrer"><img src="/assets/img/98d9aaea26f4518d6763ab41a9d49a0b.png" width="50"
+                height="50" /></a>
+            <a href="" title="" rel="noopener noreferrer"><img src="/assets/img/4bbc56aefe055d736e2fb49e9469e46c.png" height="50" /></a>
+          </div>
+        </div>
+        <div id="close" class="modal-footer" tabindex="0">
+          Close
+        </div>
+      </div>
+    </template>
+
+    <contact-modal>
+    </contact-modal>
+  </main>
+<script type="text/javascript" src="/vendors~main.js"></script><script type="text/javascript" src="/main.js"></script></body>
+
+</html>
