@@ -23,11 +23,6 @@ hr {
     padding: 0;
 }
 
-textarea {
-    resize: none;
-    width: calc(100% - 8rem);
-}
-
 body {
     background: linear-gradient(45deg, $dark, #2e1d35);
     margin: 0;
@@ -56,33 +51,4 @@ button {
     &:hover {
         background-color: #1B9540;
     }
-}
-
-input,
-textarea {
-    padding: 1rem;
-    font-size: 1.5rem;
-    border-radius: 1rem 0 1rem 0;
-    border: 0.1rem solid rgba(0, 0, 0, 0.3);
-    margin: 1rem;
-}
-fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-input[type="submit"] {
-    transition: 0.4s;
-    background-color: $green;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.9);
-    width: 50%;
-
-    &:hover {
-        background-color: $purple;
-    }
-}
-
-form {
-    transition: 0.4s;
 }

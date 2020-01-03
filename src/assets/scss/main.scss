@@ -4,38 +4,6 @@
 @import './fonts';
 @import './atomic';
 
-.loader {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    display: none;
-
-    &::after {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        content: '';
-        width: 10rem;
-        height: 10rem;
-        border: 16px solid $green;
-        border-top: 16px solid $purple;
-        border-radius: 50%;
-        animation: loader 1.5s linear infinite;
-        transition: 0.4s;
-    }
-
-    &::before {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        content: '';
-        background-color: rgba(0, 0, 0, 0.9);
-        top: 0;
-        left: 0;
-    }
-}
 
 .sun {
     background: url('../img/sun.svg') top left/contain no-repeat;
@@ -75,83 +43,6 @@
     }
 }
 
-.modal {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    width: 90%;
-    min-width: 28rem;
-    max-width: 50rem;
-    background: white;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 1.7rem;
-    font-family: 'Sunny Body';
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
-    z-index: 3;
-    transform: translate(-50%, -200%);
-    opacity: 0;
-    transition: 0.5s;
-}
 
-.modal-head {
-    background: #8B69D1;
-    padding: 2rem;
-    color: #42287A;
 
-    img {
-        filter: invert(1)
-    }
-}
 
-.modal-content {
-    flex: 1 0;
-    padding: 2rem;
-    overflow-y: scroll;
-    position: relative;
-
-    h2 {
-        font-family: 'Sunny Title';
-    }
-}
-
-.links-logos {
-    margin: 2rem 0;
-
-    a {
-        opacity: 0.6;
-        transition: 0.4s;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-}
-
-.modal-footer {
-    background: #42287A;
-    padding: 2rem;
-    color: #8B69D1;
-    cursor: pointer;
-    transition: 0.4s;
-
-    &:hover {
-        background-color: $red;
-        color: white;
-    }
-}
-
-@keyframes loader {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
