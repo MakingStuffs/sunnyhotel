@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server/dev-server.js",
-    "mail": "node server/mail-server.js"
+    "mail": "node server/mail-server.js",
+    "prod": "webpack --config webpack.prod.js"
   },
   "postcss": {
     "plugins": {
