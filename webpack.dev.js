@@ -5,15 +5,7 @@ const common = require('./webpack.common');
 const webpack = require('webpack');
 const postcssEnv = require('postcss-preset-env');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
-function recursiveIssuer(m) {
-    if (m.issuer) {
-      return recursiveIssuer(m.issuer);
-    } else if (m.name) {
-      return m.name;
-    } else {
-      return false;
-    }
-  }
+
 module.exports = merge(common, {
     mode: 'development',
     entry: [
