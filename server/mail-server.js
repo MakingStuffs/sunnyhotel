@@ -1,18 +1,60 @@
+const {
+    body,
+    validationResult,
+} = require('express-validator');
 const env = require('dotenv').config();
 const express = require('express');
-const expressFormidable = require('express-formidable');
 const app = express();
 const cors = require('cors');
 const nodeMailer = require('nodemailer');
-const {SMTP_HOST, SMTP_PORT, SMTP_PW, SMTP_USER, MAIL_PORT} = env.parsed;
+const helmet = require('helmet');
+const {
+    SMTP_HOST,
+    SMTP_PORT,
+    SMTP_PW,
+    SMTP_USER,
+    MAIL_PORT
+} = env.parsed;
+
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"]
+    }
+}))
 app.use(cors());
 
-app.use(expressFormidable());
+app.use(express.json());
+app.post('/send-mail', [body('firstname').isLength({
+    min: 3
+}).withMessage('Must be at least 3 characters').escape().trim(), body('lastname').isLength({
+    min: 3
+}).escape().trim(), body('subject').isLength({
+    min: 3
+}).escape().trim(), body('email').isEmail({
+    min: 3
+}).normalizeEmail(), body('message').isLength({
+    min: 3
+}).escape().trim(), ], async (req, res) => {
+    console.log(req.body);
+    if(validationResult(req).errors[0]) {
+        const errs = [];
+        for(let err of validationResult(req).errors) {
+            errs.push({
+                field: err.param,
+                error: err.msg
+            });
+        }
+        return res.send(errs);
+    }
 
-app.post('/send-mail', (req,res) => {
-    const { firstname, lastname, subject, email, message } = req.fields;
-
-    
+    const {
+        firstname,
+        lastname,
+        subject,
+        email,
+        message
+    } = req.body;
     const mailerOptions = {
         host: SMTP_HOST,
         port: SMTP_PORT,
@@ -25,7 +67,7 @@ app.post('/send-mail', (req,res) => {
     const transporter = nodeMailer.createTransport(mailerOptions);
     const messageOptions = {
         to: 'iamjustp@gmail.com',
-        from: email,
+        from: SMTP_USER,
         replyTo: email,
         subject: subject,
         text: firstname + '\n' + lastname + '\n' + message,
@@ -33,8 +75,7 @@ app.post('/send-mail', (req,res) => {
     };
     transporter.sendMail(messageOptions, (err, info) => {
         if (err) return console.log(err);
-        console.log(info);
-        return res.send({data: info});
+        return res.send({success: info.response});
     });
 });
 
