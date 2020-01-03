@@ -95,6 +95,11 @@ module.exports = merge(common, {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/views/pages/index.ejs',
