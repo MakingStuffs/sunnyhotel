@@ -158,7 +158,7 @@
         }
 
         .modal-footer:hover {
-          background-color: red;
+          background-color: #CA3C25;
           color: white;
         }
 
@@ -486,7 +486,7 @@
           <img src="../../assets/img/laundry.svg" height="25" class="head-logo" />
         </div>
         <div class="modal-content">
-          <form role="form" method="post" action="localhost:8080/send-mail" enctype="multipart/form-data">
+          <form role="form" method="post" action="http://localhost:8080/send-mail" enctype="multipart/form-data">
             <h3>Send a message</h3>
             <fieldset>
               <contact-input type="text" regex="^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*$" name="firstname"
