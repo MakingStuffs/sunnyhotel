@@ -43,10 +43,12 @@ class ContactModal extends HTMLElement {
             const shadow = this.attachShadow({
                 mode: 'open'
             });
+
             // Assign template to this element
             const template = msQuery('#contact-template');
             const node = document.importNode(template.content, true);
-            shadow.append(node)
+            shadow.append(node);
+
             // Set variables to use within app
             this.form = msQuery('form', this.shadowRoot);
             this.fields = msQuery('fieldset', this.shadowRoot);
@@ -121,7 +123,31 @@ class ContactModal extends HTMLElement {
 
     async submitForm(e) {
         e.preventDefault();
+
+        // Setup recaptcha field
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LfxgcsUAAAAACq6d-R8izsfMbDymuSabaewqrAM', {
+                action: 'submit'
+            }).then(async function (token) {
+                const reply = await fetch('http://localhost:5000/auth', {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify({
+                        token: token
+                    })
+                });
+                const data = await reply.json();
+                if(!data.success) {
+                    return alert('It seems that Google thinks you are a bot');
+                }
+            });
+        });
+
+        // Disable the form to stop double submission
         this.fields.disabled = true;
+
         if (!this.loading) {
             this.loading = true;
             const validated = await this.validateFields();
