@@ -352,6 +352,9 @@ class ContactInput extends ContactModal {
               
               input,
               textarea {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
                 padding: 1rem;
                 font-size: 1.5rem;
                 border-radius: 1rem 0 1rem 0;
