@@ -29,14 +29,14 @@ app.post('/send-mail', [body('firstname').isLength({
     min: 3
 }).withMessage('Must be at least 3 characters').escape().trim(), body('lastname').isLength({
     min: 3
-}).escape().trim(), body('subject').isLength({
+}).withMessage('Must be at least 3 characters').escape().trim(), body('subject').isLength({
     min: 3
-}).escape().trim(), body('email').isEmail({
+}).withMessage('Must be at least 3 characters').escape().trim(), body('email').isEmail({
     min: 3
-}).normalizeEmail(), body('message').isLength({
+}).withMessage('Must be at least 3 characters').normalizeEmail(), body('message').isLength({
     min: 3
-}).escape().trim(), ], async (req, res) => {
-    console.log(req.body);
+}).withMessage('Must be at least 3 characters').escape().trim(), ], async (req, res) => {
+
     if(validationResult(req).errors[0]) {
         const errs = [];
         for(let err of validationResult(req).errors) {
