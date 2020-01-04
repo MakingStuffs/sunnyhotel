@@ -5,5 +5,5 @@ module.exports = {
     ],
     output: {
         publicPath: '/',
-    }
+    },
 }

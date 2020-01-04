@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server/dev-server.js",
     "mail": "node server/mail-server.js",
-    "prod": "webpack --config webpack.prod.js",
+    "prod": "webpack --config webpack.prod.js --config-register @babel/register",
     "auth": "node server/auth-server.js"
   },
   "postcss": {
@@ -26,8 +26,10 @@
     "@babel/plugin-transform-regenerator": "^7.7.5",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.6",
+    "@babel/register": "^7.7.7",
     "@fortawesome/fontawesome-free": "^5.12.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "cors": "^2.8.5",
     "css-loader": "^3.4.0",
     "dotenv": "^8.2.0",
@@ -42,6 +44,7 @@
     "helmet": "^3.21.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "img-loader": "^3.0.1",
     "making-stuffs-queries": "^1.1.11",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.0",
@@ -54,5 +57,20 @@
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
   }
 }

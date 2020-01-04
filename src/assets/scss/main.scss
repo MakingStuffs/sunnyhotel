@@ -5,15 +5,8 @@
 @import './atomic';
 
 .sun {
-    background: url('../img/sun.svg') top left/contain no-repeat;
     width: 10rem;
     height: 10rem;
-    top: -10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    content: '';
-    z-index: 1;
 }
 
 .coming-soon {
